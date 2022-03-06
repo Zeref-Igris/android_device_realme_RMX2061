@@ -1,25 +1,31 @@
 #
-# Copyright (C) 2020 The DotOS
+# Copyright (C) 2021 xdroid-CAF
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+
+# Inherit framework first
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Inherit from RMX2061 device
 $(call inherit-product, device/realme/RMX2061/device.mk)
 
 # Bootanimation Resolution
 TARGET_BOOT_ANIMATION_RES := 1080
-WITH_GMS := true
+XDROID_BOOT_DARK := true
+XDROID_UI_BLUR := true
 
-# Official-ify
-DERP_BUILDTYPE := Official
-USE_LEGACY_BOOTANIMATION := true
+# xd. GMS
+include vendor/google/gms/gms.mk
 
-# Inherit some common stuff
-$(call inherit-product, vendor/derp/config/common_full_phone.mk)
+# Inherit some common xdroid-CAF stuff
+$(call inherit-product, vendor/xdroid/config/common.mk)
 
 # Device identifier
-PRODUCT_NAME := derp_RMX2061
+PRODUCT_NAME := xdroid_RMX2061
 PRODUCT_DEVICE := RMX2061
 PRODUCT_BRAND := Realme
 PRODUCT_MODEL := Realme 6 Pro
