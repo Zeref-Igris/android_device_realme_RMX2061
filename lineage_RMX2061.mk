@@ -13,14 +13,20 @@ TARGET_BOOT_ANIMATION_RES := 1080
 # Target
 TARGET_SUPPORTS_QUICK_TAP := true
 
+#RisingOS Variables
+RISING_MAINTAINER := Zeref
+
 #AOSP Recovery
 TARGET_USES_AOSP_RECOVERY := true
 
-# Inherit some common AOSP stuff
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+# Gapps Config
+WITH_GMS := true
+
+# Inherit some common lineage stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier
-PRODUCT_NAME := aosp_RMX2061
+PRODUCT_NAME := lineage_RMX2061
 PRODUCT_DEVICE := RMX2061
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := RMX2061
@@ -36,4 +42,6 @@ BUILD_FINGERPRINT := "realme/RMX2061/RMX2061L1:11/RKQ1.201112.002/1649930822295:
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=RMX2061 \
     TARGET_PRODUCT=RMX2061 \
+    RISING_CHIPSET="Snapdragon 720G" \
+    RISING_MAINTAINER="Zeref" \
     PRIVATE_BUILD_DESC="RMX2061-user 11 RKQ1.201112.002 1649930822295 release-keys"
